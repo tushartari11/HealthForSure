@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="../static/home.css">
+    <style>
+        .about{
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>HealthForSure</h1>
+        <div class="right">
+            <form method="post" action="/">    
+                <button type="submit"><h3>Home</h3></button>
+                {% csrf_token %}
+            </form>
+            <form method="post" action="/aboutus">   
+                <button type="submit"><h3>About Us</h3></button>
+                {% csrf_token %}
+            </form>
+            <form method="post" action="/login">    
+                <button type="submit"><h3>Login</h3></button>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+    <div class="about">
+        <h2>This is a Sem-4 Miniproject prepared by:</h2><br>
+        <h3>SE3-20 Kshitij Jadhav</h3>
+        <h3>SE3-28 Sarthak Kharade</h3>
+        <h3>SE3-37 Yug Panchal</h3>
+        <h3>SE3-42 Ronit Pol</h3>
+    </div>
+</body>
+</html>

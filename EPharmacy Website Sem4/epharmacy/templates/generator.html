@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPharmacy</title>
+    <link rel="stylesheet" href="../static/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <h1>HealthForSure</h1>
+    </div>
+    <div class="searchbar">
+        <input type="text" placeholder="Search for Medicines">
+        <div class="srchicon">    
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </div>
+    <div class="products">
+        <div class="productbox">   
+            <div class="image"> 
+                <img src="../static/Images/Crocin 650.png" alt="Crocin 650">
+            </div>
+            <div class="info">
+                <h3>Crocin 650</h3>
+                <h4>Rs.30</h4>
+                <button class="add">Add to Cart</button>
+            </div>
+        </div>
+        <div class="productbox">
+            <div class="image">
+                <img src="../static/Images/Ibuprofen.png" alt="Ibuprofen">
+            </div>
+            <div class="info">
+                <h3>Ibuprofen</h3>
+                <h4>Rs.50</h4>
+                <button class="add">Add to Cart</button>
+            </div>
+        </div>
+        <div class="productbox">
+            <div class="image">
+                <img src="../static/Images/Benadryl.png" alt="Benadryl">
+            </div>
+            <div class="info">
+                <h3>Benadryl</h3>
+                <h4>Rs.150</h4>
+                <button class="add">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    <div class="cart">
+        <hr>
+        <h2>Cart</h2>
+        <div class="carttable">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th id="df">Dosage Frequency<br>(Morning-Afternoon-Evening-Night)</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>DropItem</th>
+                </tr>
+            </table>
+            <div class="totalgenerate">
+                <p><span>Total = Rs.<b>0</b></span></p>
+                <form method="post" action="/prescription">
+                    <button id="generate" type="submit">Generate Prescription</button></a>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../static/home.js"></script>
+</body>
+</html>
