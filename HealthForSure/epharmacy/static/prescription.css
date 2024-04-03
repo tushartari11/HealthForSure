@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Onest';
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+
+.heading{
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    text-decoration-color: #3185FC;
+    margin-bottom: 10px;
+}
+
+.info{
+    display: flex;
+    justify-content: space-between;
+    width: 50vw;
+}
+
+table{
+    width: 90vw;
+    border-collapse: collapse;
+    margin-left: 30px;
+}
+table, th, td{
+    border: 1px solid black;
+}
+th{
+    background-color: #7FFFD4;
+    width: 180px;
+    height: 50px;
+}
+#df{
+    width: 200px;
+}
+td{
+    text-align: center;
+}
+tr{
+    height: 40px;
+}
+
+.totalgenerate{
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+p{
+    font-size: 20px;
+}
