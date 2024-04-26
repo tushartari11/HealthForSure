@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="../static/viewcart.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    {% comment %} some issue with loading css hence writing css here {% endcomment %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Onest';
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        h1{
+            text-decoration: underline;
+            text-decoration-color: #3185FC;
+        }
+
+        .products{
+            border: 1px solid black;
+            border-radius: 10px;
+            width: 75vw;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        table{
+            width: 70vw;
+            border-collapse: collapse;
+        }
+        table, th, td{
+            border: 1px solid black;
+        }
+        th{
+            background-color: #7FFFD4;
+            width: 180px;
+            height: 50px;
+        }
+        #df{
+            width: 200px;
+        }
+        td{
+            text-align: center;
+        }
+        tr{
+            height: 40px;
+        }
+
+        table input{
+            width: 35px;
+            height: 30px;
+            padding-left: 10px;
+            font-size: 16px;
+        }
+        input[type=text]{
+            width: 70px;
+        }
+        input[type=number]:hover::-webkit-inner-spin-button {  
+            width: 15px;
+            height: 30px;
+        }
+
+
+        .twobtns{
+            display: flex;
+            width: 500px;
+            justify-content: space-evenly;
+        }
+        button{
+            background-color: greenyellow;
+            color: black;
+            border-radius: 15px;
+            width: 150px;
+            height: 60px;
+            font-size: 15px;
+        }
+        button:hover{
+            color: white;
+            background-color: #37706D;
+            cursor: pointer;
+        }
+
+        .removebutton{
+            color: white;
+            background-color: red;
+            display: block;
+            margin: auto;
+            height: 30px;
+            width: 80px;
+            border-radius: 15px;
+        }
+        .removebutton:hover{
+            cursor: pointer;
+            color: black;
+            background-color: lightcoral;
+        }
+        #rmvbox{
+            display: flex;
+            height: 40px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Your Cart:</h1>
+    <div class="products">
+        {% if cart_products %}
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th id="df">Dosage Frequency<br>(Morning-Afternoon-Evening-Night)</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>DropItem</th>
+                </tr>
+                {% for product in cart_products %}
+                    <tr>
+                        <td>{{ product.medname }}</td>
+                        {% for key, value in dandqs.items %}
+                            {% if key == product.id|slugify %}
+                                <td> {{ value.0 }} </td>
+                                <td> {{ value.1 }} </td>
+                            {% endif %}
+                        {% endfor %}
+                        <td>{{ product.price }}</td>
+                        <td> <button class="removebutton" data-index="{{ product.id }}">Remove</button> </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <div class="twobtns">
+                <a href="{% url 'gnrtprscrptn' patientid %}"><button>Clear cart<br>Go back</button></a>
+                <a href="{% url 'finalprescription' patientid %}"><button id="generate"> Generate Prescription </button></a>
+            </div>
+        {% else %}
+            <h2>Nothing in the cart.</h2>
+            <a href="{% url 'gnrtprscrptn' patientid %}"><button>Go back</button></a>
+        {% endif %}
+    </div>
+    <script>
+        document.querySelector(".removebutton").addEventListener("click", function(e){
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'deletecart' %}",
+                data: {
+                    product_id: $(this).data('index'),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                success: function(json){
+                    location.reload();
+                },
+                error: function(xhr, errmsg, err){
+
+                }
+            });
+        });
+    </script>
+</body>
+</html>

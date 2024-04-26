@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Onest';
+}
+
+body{
+    background-color: #3185FC;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+
+.box{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 350px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.fields{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 150px;
+}
+
+input{
+    border: 2px solid #3185FC;
+    border-radius: 2px;
+    height: 25px;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.submitdiv{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+button{
+    background-color: #3185FC;
+    color: white;
+    height: 30px;
+    font-size: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+button:hover{
+    background-color: white;
+    color: black;
+    border: 3px solid #3185FC;
+    cursor: pointer;
+}
