@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Info</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Onest';
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            align-items: center;
+        }
+
+        .box{
+            width: 400px;
+            height: 200px;
+            border: 1px solid black;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h3>Patient Name: {{ patient.fullname }}</h3>
+        <h3>Age: {{ patient.age }}</h3>
+        <h3>Gender: {{ patient.gender }}</h3>
+    </div>
+</body>
+</html>
